@@ -1,0 +1,58 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+	<p:panelGrid id="Grid" columns="2" cellpadding="5">
+  
+  	#{msgs.nombreCliente} 
+  	<h:panelGroup>
+		<p:inputText value="#{cliente.nombre}" required="true"
+			requiredMessage="#{msgs.formAltaCliente_nombre_requiredMessage}"
+			validatorMessage="#{msgs.formAltaCliente_nombre_validatorMessage}"
+			id="nombre">
+			<f:validateLength minimum="3" maximum="20" />
+		</p:inputText>
+		<p:message for="nombre" />
+	</h:panelGroup> 
+		
+  	#{msgs.apellidosCliente} 
+  	<h:panelGroup>
+		<p:inputText value="#{cliente.apellidos}" required="true"
+			requiredMessage="#{msgs.formAltaCliente_apellidos_requiredMessage}"
+			validatorMessage="#{msgs.formAltaCliente_apellidos_validatorMessage}"
+			id="apellidos">
+			<f:validateLength minimum="3" maximum="40" />
+		</p:inputText>
+		<p:message for="apellidos" />
+	</h:panelGroup>
+		
+		
+    #{msgs.emailCliente} 
+  	<h:panelGroup>
+		<p:inputText value="#{cliente.login}" required="true"
+			requiredMessage="#{msgs.formAltaCliente_email_requiredMessage}"
+			validatorMessage="#{msgs.formAltaCliente_email_validatorMessage}"
+			id="email">
+			<f:validateRegex pattern=".+@.+\.[a-z]+" />
+		</p:inputText>
+		<p:message for="email" />
+	</h:panelGroup>
+	#{msgs.passwdCliente} 
+	<h:panelGroup>
+		<p:password value="#{cliente.passwd}" required="True" id="pass1"
+			match="pass2"
+			validatorMessage="#{msgs.formAltaCliente_passwd_matchmessage}"
+			requiredMessage="#{msgs.formAltaCliente_passwd_requiredMessage}" />
+	</h:panelGroup>
+  
+	#{msgs.passwdCliConf}
+	<h:panelGroup>
+		<p:password value="#{cliente.passwd}" required="false" id="pass2" />
+	</h:panelGroup>  
+	
+	<h:commandButton value="#{msgs.botonSalvar}"
+			action="#{controllerCliente.salva}" update="Grid">
+		</h:commandButton>
+  
+</ui:composition>

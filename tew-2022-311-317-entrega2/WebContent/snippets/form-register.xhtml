@@ -1,0 +1,51 @@
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+	<p:panelGrid id="Register" columns="2">
+		<h:panelGroup>
+			<h:outputLabel for="name" value="#{msgs.nombre}" />
+		</h:panelGroup>
+		<h:panelGroup>
+			<p:inputText id="name" value="#{cliente.nombre}" required="true" />
+			<p:message for="name" />
+		</h:panelGroup>
+		<h:panelGroup>
+			<h:outputLabel for="surname" value="#{msgs.apellidos}" />
+		</h:panelGroup>
+		<h:panelGroup>
+			<p:inputText id="surname" value="#{cliente.apellidos}" required="true"/>
+			<p:message for="surname" />
+		</h:panelGroup>
+		<h:panelGroup>
+			<h:outputLabel for="email" value="#{msgs.email}" />
+		</h:panelGroup>
+		<h:panelGroup>
+			<p:inputText id="email" value="#{cliente.email}" required="true"/>
+			<p:message for="email" />
+		</h:panelGroup>
+		<h:panelGroup>
+			<h:outputLabel for="password"
+				value="#{msgs.password}" />
+		</h:panelGroup>
+		<h:panelGroup>
+			<p:password id="password" value="#{cliente.passwd}" required="true"/>
+			<p:message for="password" />
+		</h:panelGroup>
+		<h:panelGroup>
+			<h:outputLabel for="password_repeat"
+				value="#{msgs.rep_password}" />
+		</h:panelGroup>
+		<h:panelGroup>
+			<p:password id="password_repeat" value="#{cliente.rep_passwd}" required="true"/>
+			<p:message for="password_repeat" />
+		</h:panelGroup>
+		<p:commandButton value="#{msgs.registerFormSendButton}"
+			action="#{controllerClientes.salva}" update="Register">
+		</p:commandButton>
+	</p:panelGrid>
+
+</ui:composition>

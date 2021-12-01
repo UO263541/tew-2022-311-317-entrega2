@@ -1,0 +1,75 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+	<h:panelGrid id="Grid" columns="2" cellpadding="5">
+  #{msgs.idAgente} 
+  <h:panelGroup>
+			<p:inputText value="#{piso.idAgente}" required="true"
+				requiredMessage="#{msgs.formAlta_idAgente_requiredMessage}"
+				validatorMessage="#{msgs.formAlta_idAgente_validatorMessage}"
+				id="idAgente">
+				<f:validateLength maximum="3" />
+			</p:inputText>
+			<p:message for="idAgente" />
+		</h:panelGroup>
+  
+  #{msgs.precioPiso} 
+  <h:panelGroup>
+			<p:inputText value="#{piso.precio}" required="true"
+				id="precio">
+				<f:validateLength maximum="15" />
+			</p:inputText>
+			<p:message for="precio" />
+		</h:panelGroup>
+  
+  #{msgs.direccionPiso}
+  <h:panelGroup>
+			<p:inputText value="#{piso.direccion}" required="true"
+				requiredMessage="#{msgs.formAlta_direccion_requiredMessage}"
+				validatorMessage="#{msgs.formAlta_direccion_validatorMessage}"
+				id="direccion">
+				<f:validateLength minimum="1" maximum="50" />
+			</p:inputText>
+			<p:message for="direccion" />
+		</h:panelGroup>  
+  
+  #{msgs.ciudadPiso}
+  <h:panelGroup>
+			<p:inputText value="#{piso.ciudad}" required="true"
+				requiredMessage="#{msgs.formAlta_ciudad_requiredMessage}"
+				validatorMessage="#{msgs.formAlta_ciudad_validatorMessage}"
+				id="ciudad">
+				<f:validateLength minimum="1" maximum="50" />
+			</p:inputText>
+			<p:message for="ciudad" />
+		</h:panelGroup>
+		
+		  #{msgs.anioPiso}
+  <h:panelGroup>
+			<p:inputText value="#{piso.anio}" required="true"
+				requiredMessage="#{msgs.formAlta_ano_requiredMessage}"
+				validatorMessage="#{msgs.formAlta_ano_validatorMessage}"
+				id="anio">
+				<f:validateLength minimum="4" maximum="4" />
+			</p:inputText>
+			<p:message for="anio" />
+		</h:panelGroup>
+	#{msgs.estadoPiso} 
+  <h:panelGroup>
+			<p:selectOneMenu value="#{piso.estado}" required="true" id="estado">
+                
+                <f:selectItem itemLabel="1" itemValue="1"/>
+                <f:selectItem itemLabel="2" itemValue="2"/>
+                <f:selectItem itemLabel="3" itemValue="3"/>
+                <f:selectItem itemLabel="4" itemValue="4"/>
+                <f:selectItem itemLabel="5" itemValue="5"/> 
+            </p:selectOneMenu>
+		</h:panelGroup>
+		
+		<h:commandButton value="#{msgs.botonGuardar}"
+			action="#{controller.salva}" update="Grid">
+		</h:commandButton>
+	</h:panelGrid>
+</ui:composition>
