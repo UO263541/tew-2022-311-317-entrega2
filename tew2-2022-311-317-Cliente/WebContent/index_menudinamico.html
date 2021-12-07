@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Tecnologías Web</title>
+</head>
+<!--Para la presentación adecuada en los dispositivos donde se visualice-->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--
+width=device-width establece el ancho de la página para que se ajuste al dispositivo.
+initial-scale=1 establece el nivel de zoom inicial -->
+<!--Uso de hojas de estilo de bootstrap local-->
+<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+<!-- jQuery library -->
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<!-- Latest compiled JavaScript -->
+<script
+	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<body style="background-color: #f2f2f2">
+	<!-- 
+	***************************************************
+	* CABECERA DE LA PAGINA ***************************
+	***************************************************
+	-->
+	<div class="container">
+		<div class="page-header">
+			<!-- 
+	***************************************************
+	* MENU ********************************************
+	***************************************************
+	-->
+			<nav class="navbar navbar-default" role="navigation">
+				<div class="navbar-header">
+					<a class="navbar-brand" href="#">Gestioneitorv.6.0</a>
+				</div>
+				<div>
+					<ul class="nav navbar-nav">
+						<li class="dropdown"><a class="dropdown-toggle"
+							data-toggle="dropdown" href="#">Alumnos <span class="caret"></span></a>
+							<ul class="dropdown-menu">
+								<li><a href="altaAlumno_bootstrap.html" target="formulario">Alta</a></li>
+								<li><a href="#bajaAlumno">Baja</a></li>
+								<li><a href="#edicionAlumno">Edicion</a></li>
+								<li><a href="listado_bootstrap.html" target="formulario">Listado</a></li>
+								<li><a href="#matricularAsignaturas">Matricular
+										Asignaturas</a></li>
+								<li><a href="#desmatricularAsignaturas">Quitar
+										Asignaturas</a></li>
+							</ul></li>
+						<li class="dropdown"><a class="dropdown-toggle"
+							data-toggle="dropdown" href="#">Asignaturas <span
+								class="caret"></span></a>
+							<ul class="dropdown-menu">
+								<li><a href="#altaAsignatura">Alta</a></li>
+								<li><a href="#bajaAsignatura">Baja</a></li>
+								<li><a href="#edicionAsignatura">Edicion</a></li>
+								<li><a href="#listadoAsignatura">Listado</a></li>
+							</ul></li>
+						<li><a href="#">Calificaciones</a></li>
+					</ul>
+					<ul class="nav navbar-nav navbar-right">
+						<li><a href="login_bootstrap.html" target="formulario"> <span
+								class="glyphicon glyphicon-log-in"></span> Login
+						</a></li>
+						<li><a href="login_bootstrap.html" target="formulario"> <span
+								class="glyphicon glyphicon-log-out"></span> Logout
+						</a></li>
+					</ul>
+				</div>
+			</nav>
+		</div>
+		<div class="row">
+			<!--
+***************************************************
+* SECCION PRINCIPAL DE FORMULARIOS EXTERNOS********
+***************************************************
+-->
+			<div class="col-sm-9">
+				<iframe name="formulario" src="login_bootstrap.html" width="100%"
+					height="500px"> </iframe>
+			</div>
+			<!--
+***************************************************
+* ELEMENTO LATERAL INFORMATIVO ********************
+***************************************************
+-->
+			<div class="col-sm-3 bg-info">
+				<aside>
+					<section>
+
+						<h2>Proyecto GestioneitorCli v0.0</h2>
+
+						<p>En este proyecto de partida para la asignatura se incluyen:
+
+
+
+
+						
+						<ol>
+							<li>Secciones básicas para estructurar el código de
+								GestioneitorCli en HTML4.</li>
+						</ol>
+					</section>
+				</aside>
+			</div>
+		</div>
+		<div class="panel panel-default">
+			<div class="panel-footer">
+				<ul>
+					<li><a href="#">Casa</a></li>
+					<li><a href="#">Contacto</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
