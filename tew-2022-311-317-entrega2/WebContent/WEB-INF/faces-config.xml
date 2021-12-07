@@ -1,0 +1,182 @@
+<?xml version="1.0"?>
+<faces-config xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd"
+	version="2.2">
+
+	<application>
+		<resource-bundle>
+			<base-name>messages</base-name>
+			<var>msgs</var>
+		</resource-bundle>
+	</application>
+
+	<managed-bean>
+		<managed-bean-name>controller</managed-bean-name>
+		<managed-bean-class>com.tew.presentation.BeanPisos</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+
+	<managed-bean>
+		<managed-bean-name>controllerVisitas</managed-bean-name>
+		<managed-bean-class>com.tew.presentation.BeanPisosParaVisitar</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+
+	<managed-bean>
+		<managed-bean-name>controllerClientes</managed-bean-name>
+		<managed-bean-class>com.tew.presentation.BeanClientes</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+
+	<managed-bean>
+		<managed-bean-name>settings</managed-bean-name>
+		<managed-bean-class>com.tew.presentation.BeanSettings</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+
+	<managed-bean>
+		<managed-bean-name>login</managed-bean-name>
+		<managed-bean-class>com.tew.presentation.BeanLogin</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+
+	<navigation-rule>
+		<from-view-id>*</from-view-id>
+		<navigation-case>
+			<from-outcome>error</from-outcome>
+			<to-view-id>/faces/restricted/error.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>login</from-outcome>
+			<to-view-id>/index.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>casa</from-outcome>
+			<to-view-id>/restricted/opciones.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>alta</from-outcome>
+			<to-view-id>/restrictedAgent/altaPiso.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-action>#{controller.listado}</from-action>
+			<from-outcome>exito</from-outcome>
+			<to-view-id>/restricted/listadoPisos.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-action>#{controller.listado2}</from-action>
+			<from-outcome>exito</from-outcome>
+			<to-view-id>/restrictedAgent/listadoPisos.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-action>#{controllerVisitas.listadoCliente}</from-action>
+			<from-outcome>exito</from-outcome>
+			<to-view-id>/restricted/listadoPisosParaVisitar.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-action>#{controller.listadoAgente}</from-action>
+			<from-outcome>exito</from-outcome>
+			<to-view-id>/restrictedAgent/listadoPisosAgente.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-action>#{login.logout}</from-action>
+			<from-outcome>exito</from-outcome>
+			<to-view-id>/index.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-action>#{controllerVisitas.listadoAgente}</from-action>
+			<from-outcome>exito</from-outcome>
+			<to-view-id>/restrictedAgent/listadoPisosAgente.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+
+
+	<navigation-rule>
+		<from-view-id>/restrictedAgent/listadoPisos.xhtml</from-view-id>
+		<navigation-case>
+			<from-action>#{controllerVisitas.edit}</from-action>
+			<from-outcome>exito</from-outcome>
+			<to-view-id>/restrictedAgent/editPiso.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-action>#{controller.baja(vpiso)}</from-action>
+			<from-outcome>exito</from-outcome>
+			<to-view-id>/restrictedAgent/listadoPisos.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-action>#{login.resetBaseDatos}</from-action>
+			<from-outcome>exito</from-outcome>
+			<to-view-id>/restrictedAgent/listadoPisos.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+
+	<navigation-rule>
+		<from-view-id>/restrictedAgent/altaPiso.xhtml</from-view-id>
+		<navigation-case>
+			<from-action>#{controller.salva}</from-action>
+			<from-outcome>exito</from-outcome>
+			<to-view-id>/restrictedAgent/listadoPisos.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+
+
+	<navigation-rule>
+		<from-view-id>/restrictedAgent/editPiso.xhtml</from-view-id>
+		<navigation-case>
+			<from-action>#{controller.salva}</from-action>
+			<from-outcome>exito</from-outcome>
+			<to-view-id>/restrictedAgent/listadoPisos.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+
+	<navigation-rule>
+		<from-view-id>/restricted/listadoPisos.xhtml</from-view-id>
+		<navigation-case>
+			<from-action>#{controllerVisitas.establecerVisita(vpiso.id)}</from-action>
+			<from-outcome>exito</from-outcome>
+			<to-view-id>/restricted/listadoPisos.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+
+
+	<navigation-rule>
+		<from-view-id>/restricted/listadoPisosParaVisitar.xhtml</from-view-id>
+		<navigation-case>
+			<from-action>#{controllerVisitas.confirma(vpiso.idPiso)}</from-action>
+			<from-outcome>exito</from-outcome>
+			<to-view-id>/restricted/listadoPisosParaVisitar.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+
+	<navigation-rule>
+		<from-view-id>/index.xhtml</from-view-id>
+		<navigation-case>
+			<from-action>#{login.verify}</from-action>
+			<from-outcome>success</from-outcome>
+			<to-view-id>/restricted/opciones.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-action>#{login.verify}</from-action>
+			<from-outcome>success_agente</from-outcome>
+			<to-view-id>/restrictedAgent/opciones.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-action>#{login.verify}</from-action>
+			<from-outcome>login</from-outcome>
+			<to-view-id>/index.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<to-view-id>/register.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<from-view-id>/register.xhtml</from-view-id>
+		<navigation-case>
+			<from-action>#{controllerClientes.salva}</from-action>
+			<from-outcome>exito</from-outcome>
+			<to-view-id>/restricted/opciones.xhtml</to-view-id>
+		</navigation-case>
+
+	</navigation-rule>
+</faces-config>

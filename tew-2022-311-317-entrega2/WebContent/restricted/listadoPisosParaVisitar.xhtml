@@ -1,0 +1,44 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	template="/templates/template-general-client.xhtml">
+
+	<ui:define name="titulo">
+	#{msgs.listadoPisosTitle}	
+  </ui:define>
+
+	<ui:define name="cuerpo">
+		<h:form>
+			<p:dataTable id="tablaListado" var="vpiso" value="#{controllerVisitas.pisos}" border="1">
+				<p:column>
+					<f:facet name="header">#{msgs.idPiso}</f:facet>#{vpiso.idPiso}
+				</p:column>
+				<p:column>
+					<f:facet name="header">#{msgs.cliente}</f:facet>#{vpiso.idCliente}
+				</p:column>
+
+				<p:column>
+					<f:facet name="header">#{msgs.fecha}</f:facet>#{vpiso.fechaHoraCita}
+				</p:column>
+				
+				<p:column>
+					<f:facet name="header">#{msgs.estadoPiso}</f:facet>#{vpiso.estadoVisita}
+				</p:column>
+		
+				<p:column>
+					<f:facet name="header">#{msgs.botonConfirmarLabel}</f:facet>
+					<p:commandLink type="submit"
+						value="#{msgs.botonConfirmarLabel}" immediate="true" update="tablaListado" action="#{controllerVisitas.confirma(vpiso.idPiso)}">
+					</p:commandLink>
+				</p:column>
+				
+				
+			</p:dataTable>
+		</h:form>
+	</ui:define>
+	<ui:define name="pie">
+	<ui:include src="/snippets/pie-casa.xhtml" />
+	</ui:define>
+</ui:composition>
