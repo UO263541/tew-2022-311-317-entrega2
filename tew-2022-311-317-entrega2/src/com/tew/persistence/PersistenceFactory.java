@@ -14,5 +14,6 @@ public interface PersistenceFactory {
 	ClientesDao createClientesDao();
 	PisosDao createPisosDao();
 	PisosParaVisitarDao createPisosParaVisitarDao();	
+	ResetBDDao createResetBDDao();
 }
 

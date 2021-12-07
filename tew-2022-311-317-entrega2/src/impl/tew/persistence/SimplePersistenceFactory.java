@@ -32,6 +32,12 @@ public class SimplePersistenceFactory implements PersistenceFactory {
 		// TODO Auto-generated method stub
 		return new PisosJdbcDao();
 	}
+
+	@Override
+	public ResetBDDao createResetBDDao() {
+		// TODO Auto-generated method stub
+		return new ResetBDJdbcDao();
+	}
 	
 
 }
