@@ -17,7 +17,7 @@ import com.tew.persistence.exception.*;
  * @author Enrique
  *
  */
-public class ReseBDJdbcDao implements ResetBDDao {
+public class ResetBDJdbcDao implements ResetBDDao {
 
 	
 	
@@ -26,7 +26,13 @@ public class ReseBDJdbcDao implements ResetBDDao {
 	public void resetbd() throws Exception {
 		// TODO Auto-generated method stub
 		
+		//Eliminamos los datos de las tablas deseadas
+		ejecutaSQL("delete from Agentes");
+		ejecutaSQL("delete from Pisos");
 		
+		//Añadimos los agentes deseados
+		ejecutaSQL("INSERT INTO AGENTES VALUES(1,'agente1@micorreo.com','clave1')");
+		ejecutaSQL("INSERT INTO AGENTES VALUES(2,'agente2@micorreo.com','clave2')");
 		
 	}
 	
@@ -38,7 +44,7 @@ public class ReseBDJdbcDao implements ResetBDDao {
 			String SQL_DRV = "org.hsqldb.jdbcDriver";
 			String SQL_URL = "jdbc:hsqldb:hsql://localhost/localDB";
 
-			// Obtenemos la conexiï¿½ï¿½n a la base de datos.
+			// Obtenemos la conexion a la base de datos.
 			Class.forName(SQL_DRV);
 			con = DriverManager.getConnection(SQL_URL, "sa", "");
 			ps = con.prepareStatement(s);
