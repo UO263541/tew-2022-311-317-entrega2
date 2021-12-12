@@ -61,7 +61,6 @@ INSERT INTO PISOS VALUES(2,2,84270.0E0,'avenida de La Tenderina, 7','Oviedo',198
 INSERT INTO PISOS VALUES(3,2,274187.0E0,'Plaza Primo Rivera, 5','Oviedofdsdsf',19729,1,'/album/foto3.jpg')
 INSERT INTO PISOS VALUES(4,2,106227.0E0,'Santa Susana, 2','Oviedo',1954,4,'/album/foto4.jpg')
 INSERT INTO PISOS VALUES(5,2,53601.0E0,'San Pedro Mestallon, 3','Oviedo',1992,5,'/album/foto5.jpg')
-INSERT INTO PISOS VALUES(6,1,487812.0E0,'Carretera de La Costa, 110','Gijon',2010,5,'/album/foto6.jpg')
 INSERT INTO PISOS VALUES(7,1,261888.0E0,'avenida Schultz, 95','Gijon',1978,4,'/album/foto7.jpg')
 INSERT INTO PISOS VALUES(8,1,327489.0E0,'avenida del Llano, 30','Gijon',1999,3,'/album/foto8.jpg')
 INSERT INTO PISOS VALUES(9,1,67689.0E0,'Plaza del Carmen, 2','Gijon',2005,3,'/album/foto9.jpg')

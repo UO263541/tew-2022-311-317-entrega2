@@ -1,0 +1,65 @@
+
+/*CUSTOM STYLES - LOGIN*/
+
+body{
+	padding: 0 10vw;
+	background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0, 0.5)), url("../assets/Background.jpg");
+	background-position: center;
+	background-size: cover;
+	background-repeat: no-repeat;
+	height: 100vh;
+	display: flex;
+	align-items:center;
+	justify-content: center;
+}
+
+.login-wrapper{
+	padding: 40px;
+	height: 50vh;
+	border-radius: 10px;
+	background-color: #f2f2f2;
+	box-shadow: 0px 3px 12px rgba(0,0,0,0.3);
+	display: flex;
+	align-items:center;
+	flex-direction: column;
+	max-width: 30vw;
+    min-width: 300px;
+}
+
+header{
+	margin-bottom: 15px;
+}
+
+form{
+	display: flex;
+	flex-direction:column;
+}
+
+.form-group{
+	margin-bottom: 20px;
+}
+
+button[type="submit"]{
+	background-color: #0d6efd;
+	text-align: center;
+	width: 100%;
+	padding: 10px 0;
+	border-radius: 30px;
+	text-transform: uppercase;
+	color: #f2f2f2;
+	font-weight: bold;
+	letter-spacing: 0.5px;
+}
+
+button[type="reset"]{
+	text-align: center;
+	align-self: center;
+	margin-top: 10px;
+	opacity: 0.5;
+	transition: all 0.35s ease-in;
+}
+
+button[type="reset"]:hover{
+	opacity: 1;
+}
+
