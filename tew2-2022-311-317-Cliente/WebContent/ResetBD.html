@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Idealiste</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+<script src="jquery/Jquery-1.11.3.min.js"></script>
+<script type="text/javascript"
+ src="http://localhost:8080/gestioneitorv3_0/rest-jsapi">
+ </script>
+
+ <script type="text/javascript">
+ function resetBD() {
+		var txt;
+		
+		if (confirm("¿Deseas reiniciar la Base de datos?")) {
+			txt = "La base de datos se ha reiniciado";
+			PisosServicesRs.borrarDataBase();
+		} else {
+			txt = "Has cancelado la operacion";
+		}
+		document.getElementById("demo").innerHTML = txt;
+	}
+ </script>
+</head>
+<body>
+ 	<h1>Reinicio de Base de Datos</h1>
+ 	
+ 	<p>Se eliminaran todos los pisos, así como todos sus datos relacionados</p>
+	<input type="submit" value="Reiniciar base de datos" id="buttonReset"
+		required class="btn btn-default" onClick="resetBD()" />
+	<p id="demo"></p>
+ 	
+</body>
+</html>
