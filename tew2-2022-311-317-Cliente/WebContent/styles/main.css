@@ -1,0 +1,22 @@
+
+/*CUSTOM STYLES - LOGIN*/
+
+/*Header styles*/
+.site-header{
+	box-shadow: 0px 3px 12px rgba(0,0,0,0.2)
+}
+
+.site-logo{
+	margin-right: 30px;
+}
+
+
+/*Footer styles*/
+.site-footer{
+	width: 100%;
+	height: fit-content;
+	background-color: #ffffff;
+	position: absolute;
+	bottom: 0;
+}
+

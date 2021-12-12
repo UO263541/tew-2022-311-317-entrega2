@@ -2,23 +2,34 @@
 <html> 
 <head> 
   <meta charset="utf-8"> 
-  <title>Login</title> 
+  <!--Uso de hojas de estilo de bootstrap local--> 
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  
+  <!-- Estilos personalizados  -->
+  <link href="./styles/login.css" rel="stylesheet">
+  <title>Iniciar Sesión</title> 
 </head> 
 <body> 
-  <section> 
+  <section class="login-wrapper"> 
     <header> 
-      <h1>Login alumno</h1> 
-      <time datetime="2019-11-11" pubdate> November 11th, 2019 </time> 
+      <h1>Iniciar sesión</h1> 
     </header> 
     <article> 
       <header>Suministrar las credenciales para autenticarse:</header> 
-      <form id="login" action="#" enctype="application/x-www-form-urlencoded"> 
-        <p> Login: <input type="text" name="username" id="username" size="25" required /> </p> 
-        <p>   Contraseña: <input type="password" name="passwd" id="passwd" size="25" required /></p> 
-        <p>   <input type="submit" name="submit" id="submit" value="Enviar" />  
-            <input type="reset" name="reset" id="reset" value="Reiniciar" /> 
-        </p> 
-      </form> 
+      <form role="form" id="login" action="#" enctype="application/x-www-form-urlencoded"> 
+		  <div class="form-group"> 
+		    <label for="username">Login:</label> 
+		    <input type="text" class="form-control" id="username" size="25" required /> 
+		  </div>  
+		 
+		  <div class="form-group"> 
+		    <label for="passwd">Contraseña:</label> 
+		    <input type="password" class="form-control" id="passwd" size="25" required /> 
+		  </div>  
+		 
+		  <button type="submit" class="btn btn-default">Iniciar sesión</button> 
+		  <button type="reset" class="btn btn-default">¿No tienes una cuenta? Regístrate</button> 
+		</form> 
     </article> 
   </section> 
 </body> 
