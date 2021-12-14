@@ -79,7 +79,7 @@ function Model(){
 	        + "<td>" + piso.precio + "</td>"
 	        + "<td>" + piso.direccion 
 	        + "</td>" + "<td>" + piso.ciudad + "</td>"
-	        + "<td>" + piso.ano 
+	        + "<td>" + piso.anio 
 	        + "<td>" + piso.estado 
 	        + "<td>" + piso.foto 
 	        + "<img src='icons/edit.png' class='btnEdit'/>" 
@@ -112,7 +112,7 @@ function Model(){
 		$("#precio").val(piso.precio);
 		$("#direccion").val(piso.direccion);
 		$("#ciudad").val(piso.ciudad);
-		$("#ano").val(piso.ano);
+		$("#ano").val(piso.anio);
 		$("#estado").val(piso.estado);
 		$("#foto").val(piso.foto);
 	}
@@ -167,8 +167,10 @@ function Model(){
 	 
 	    // Cargamos la lista de pisos del servicio 
 	    this.model.load(); 
+	    
 	    // Repintamos la lista de pisos. 
 	    this.view.list(this.model.tbPisos); 
+	    console.log("Pinto Lista")
 	 
 	    // MANEJADORES DE EVENTOS 
 	 // Manejador del botón submit del formulario de Alta y Edición 
