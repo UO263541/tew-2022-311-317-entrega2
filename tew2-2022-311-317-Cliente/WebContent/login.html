@@ -7,6 +7,12 @@
   
   <!-- Estilos personalizados  -->
   <link href="./styles/login.css" rel="stylesheet">
+  
+ <script src="jquery/Jquery-1.11.3.min.js"></script>
+<script type="text/javascript"
+ src="http://localhost:8080/gestioneitorv3_0/rest-jsapi">
+ </script>
+  
   <title>Iniciar Sesión</title> 
 </head> 
 <body> 
@@ -16,7 +22,7 @@
     </header> 
     <article> 
       <header>Suministrar las credenciales para autenticarse:</header> 
-      <form role="form" id="login" action="#" enctype="application/x-www-form-urlencoded"> 
+      <form role="form" id="loginForm" action="#"> 
 		  <div class="form-group"> 
 		    <label for="username">Login:</label> 
 		    <input type="text" class="form-control" id="username" size="25" required /> 
@@ -28,9 +34,11 @@
 		  </div>  
 		 
 		  <button type="submit" class="btn btn-default">Iniciar sesión</button> 
-		  <button type="reset" class="btn btn-default">¿No tienes una cuenta? Regístrate</button> 
+		  <button type="reset" class="btn btn-default">Entrar como invitado</button>
 		</form> 
     </article> 
   </section> 
+  
+  <script type="text/javascript" src="javascript/funciones_login.js"></script>
 </body> 
 </html>
