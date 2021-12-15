@@ -272,6 +272,18 @@ function Model(){
 	   
 	    
 	    
+	    // BORRAR PISO
+	    $('#ListadoPisos .btnDelete').click(function(e){
+	    	var idPiso = that.view.getIdPiso($(this)); 
+	      
+	      //Llamamos a model para borrar el piso
+	      that.model.remove(idPiso)
+	      
+	      //Volvemos a listar los pisos
+	      that.view.list(that.model.tbPisos); 
+    	  location="indexAgente.html";
+	    })
+	    
 	    
 	    // CERRAR SESIÓN DE USUARIO
 		$("#logout").click(
