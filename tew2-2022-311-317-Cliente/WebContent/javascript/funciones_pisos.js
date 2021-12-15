@@ -91,8 +91,8 @@ function Model(){
   	  	        + "<td>" + piso.anio 
   	  	        + "<td>" + piso.estado 
   	  	        + "<td>" + piso.foto 
-  	  	        + "<img src='icons/edit.png' class='btnEdit'/>" 
-  	    	      	+ "<img src='icons/delete.png' class='btnDelete'/> </td>"
+	  	  	    + "<img src='icons/editar.png' class='btnEdit' style='height: 20px; width: auto; margin: 5px; cursor: pointer;'/>" 
+	  	      	+ "<img src='icons/eliminar.png' class='btnDelete' style='height: 20px; width: auto; margin: 5px; cursor: pointer;'/> </td>"
   	  	        +"</td></tr>");; 
   	      }
   	    } 
@@ -117,8 +117,6 @@ function Model(){
 	        + "<td>" + piso.anio 
 	        + "<td>" + piso.estado 
 	        + "<td>" + piso.foto 
-	        + "<img src='icons/edit.png' class='btnEdit'/>" 
-  	      	+ "<img src='icons/delete.png' class='btnDelete'/> </td>"
 	        +"</td></tr>");; 
   	    } 
   	  }
@@ -146,11 +144,23 @@ function Model(){
 		$("#precio").val(piso.precio);
 		$("#direccion").val(piso.direccion);
 		$("#ciudad").val(piso.ciudad);
-		$("#ano").val(piso.anio);
+		$("#anio").val(piso.anio);
 		$("#estado").val(piso.estado);
 		$("#foto").val(piso.foto);
 	}
 	
+  	
+  	// OBTENER EL ID DEL PISO
+	this.getIdPiso = function(celda) {
+		// Accedemos a la fila que está por encima de esta celda
+		// (closest('tr'))y despues obtenemos todas las celdas de esa fila
+		// (find('tr')) y
+		// nos quedamos con la segunda (get(1)) que es la contiene el "id" del
+		// piso.
+		var id_piso = parseInt(celda.closest('tr').find('td').get(1).innerHTML);
+		return id_piso;
+	}
+  	
   	
   	// FILTRAR LA TABLA DE PISOS EN FUNCIÖN DE LA CIUDAD
   	this.filtraPorCiudad = function(lista, ciudad){
@@ -175,8 +185,8 @@ function Model(){
 				        + "<td>" + piso.anio 
 				        + "<td>" + piso.estado 
 				        + "<td>" + piso.foto 
-				        + "<img src='icons/edit.png' class='btnEdit'/>" 
-			  	      	+ "<img src='icons/delete.png' class='btnDelete'/> </td>"
+				        + "<img src='icons/editar.png' class='btnEdit'/>" 
+			  	      	+ "<img src='icons/eliminar.png' class='btnDelete'/> </td>"
 				        +"</td></tr>");; 
 			}
 		
@@ -206,6 +216,9 @@ function Model(){
 	    this.view.listCliente(this.model.tbPisosPublic); 
 	    console.log("Pinto Lista")
 	 
+	    
+	    
+	    
 	    // MANEJADORES DE EVENTOS 
 	 // Manejador del botón submit del formulario de Alta y Edición 
 	    $("#formPiso").submit(
@@ -229,13 +242,26 @@ function Model(){
     	});
 	    
 	    
+	    
 	 // Manejador del enlace de edición de un piso en la tabla 
-	    $("#ListadoPisos").on("click", ".btnEdit", 
+	    $("#ListadoPisos .btnEdit").click( 
 	    		
 	    // Manejador del evento click en .btnEdit
 	    function(event) { 
+	    	
+	    	//Mostramos tabla de editar
+	    	document.getElementById('TablaEdit').removeAttribute("style");
+	    	console.log(document.getElementById('TablaEdit'))
+	    	
+	    	//Subimos hasta arriba para visualizar la tabla
+	    	window.scrollTo(0,0);
+	    	
 	      // Obtenemos el id del piso seleccionado
-	      var idPiso = that.view.getIdPiso($(this)); 
+	    	console.log($(this))
+	    	var fila = $(this).parent()
+	    	var idPiso = that.view.getIdPiso($(this)); 
+	      
+	      console.log('Que piso', idPiso)
 	      
 	      // Obtenemos el piso con el id 
 	      var piso = that.model.find(idPiso); 

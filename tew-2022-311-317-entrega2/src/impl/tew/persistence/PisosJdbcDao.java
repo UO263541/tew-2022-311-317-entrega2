@@ -223,18 +223,19 @@ public class PisosJdbcDao implements PisosDao {
 			Class.forName(SQL_DRV);
 			con = DriverManager.getConnection(SQL_URL, "sa", "");
 			ps = con.prepareStatement(
-					"update Pisos " +
-					"set id_agente = ?, precio = ?, direccion = ?, ciudad=?, estado=? " +
-					"where pisos.id = ?");
+					"UPDATE PISOS SET ID_AGENTE=?, PRECIO=?, DIRECCION=?, CIUDAD=?, ANIO=?, ESTADO=?, FOTO=? WHERE ID=?");
 
 
 			ps.setLong(1, piso.getIdAgente());
 			ps.setDouble(2, piso.getPrecio());
 			ps.setString(3, piso.getDireccion());
 			ps.setString(4, piso.getCiudad());
-			ps.setInt(5, piso.getEstado());
-			ps.setLong(6, piso.getId());
+			ps.setInt(5, piso.getAnio());
+			ps.setInt(6, piso.getEstado());
 			ps.setString(7,piso.getFoto());
+			ps.setLong(8, piso.getId());
+
+
 			
 			rows = ps.executeUpdate();
 			if (rows != 1) {

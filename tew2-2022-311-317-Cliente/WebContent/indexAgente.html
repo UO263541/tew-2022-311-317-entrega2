@@ -66,6 +66,55 @@ Universidad de Oviedo
 	-->
 	<div class="row">
 		<main class="col-8">
+		
+			<article class="edit-piso-form" style="display: none;" id="TablaEdit"> 
+			    <h3>Nuevo piso: </h3> 
+			    <form id="formPiso" accept-charset=utf-8>
+					<div class="form-group">
+						<label for="id">ID:</label> <input type="text" id="id"
+							readonly="readonly" class="form-control" />
+					</div>
+					<div class="form-group">
+						<label for="idAgente">IDAgente:</label> <input type="text"
+							id="idAgente" readonly="readonly" required class="form-control" />
+					</div>
+					<div class="form-group">
+						<label for="precio">Precio:</label> <input type="text" id="precio"
+							required class="form-control" size="25" />
+					</div>
+					<div class="form-group">
+						<label for="direccion">Direccion:</label> <input type="text"
+							id="direccion" required class="form-control" size="25" />
+					</div>
+					<div class="form-group"> 
+						<label for="ciudad">Ciudad:</label> <input type="text" id="ciudad"
+							required class="form-control" size="25" />
+					</div>
+					<div class="form-group">
+						<label for="anio">Año:</label> <input type="text" id="anio" required
+							class="form-control" size="25" />
+					</div>
+					<div class="form-group">
+						<label for="estado">Estado:</label> <select id="estado">
+							<option value="1">1</option>
+							<option value="2">2</option>
+							<option value="3">3</option>
+							<option value="4">4</option>
+							<option value="4">5</option>
+						</select>
+					</div>
+	
+					<div class="form-group">
+						<label for="foto">Foto:</label> <input type="text" id="foto"
+							required class="form-control" size="25" />
+					</div>
+					<input type="submit" value="Salvar" id="btnSave" required class="btn btn-default" /> 
+					<input type="reset" value="Reset"
+						id="btnReset" required class="btn btn-default" />
+				</form>
+			  </article> 
+		
+		
 			<article class="table-responsive">
 				<table class="table table-striped table-responsive" id="ListadoPisos"></table>
 			</article>		
