@@ -12,11 +12,13 @@ $(function() {
 function Model(){ 
 	//Lista de pisos.
 	this.tbPisos = null;
+	this.tbPisosPublic = null;
 	this.IdArray = [];
 	
 	//Carga los datos del servicio sobreescribiendo el dato this.tbpisos.
 	this.load = function() {
 		this.tbPisos = PisosServicesRs.getPisos();
+		this.tbPisosPublic = PisosServicesRs.getPisos();
 		this.IdArray = [];
 	}
 	
@@ -71,9 +73,41 @@ function Model(){
   	      + "<th>Estado</th>"+ "<th>Dirección</th>" 
   	      + "<th>Imagen</th>" + "</tr>" 
   	      + "</thead>" + "<tbody>" + "</tbody>"); 
+  	    for ( var i in lista) {
+  	    	
+  	      //Obtenemos el id del agente actual
+  	      var idAgente = localStorage.getItem('agente');
+  	      //Comprobamos que el agente en sesión concuerde con el del piso
+  	      var piso = lista[i]; 
+  	      if(piso.idAgente == idAgente){
+  	    	  //Si el piso tiene como idAgente el mismo id que el agente en sesión, lo añadimos a la tabla
+  	    	$("#ListadoPisos tbody").append("<tr> <td>"   
+  	  	  	    + "<td>" + piso.id + "</td>" 
+  	  	        + "<td>" + piso.idAgente + "</td>" 
+  	  	        + "<td>" + piso.precio + "</td>"
+  	  	        + "<td>" + piso.direccion 
+  	  	        + "</td>" + "<td>" + piso.ciudad + "</td>"
+  	  	        + "<td>" + piso.anio 
+  	  	        + "<td>" + piso.estado 
+  	  	        + "<td>" + piso.foto 
+  	  	        + "<img src='icons/edit.png' class='btnEdit'/>" 
+  	    	      	+ "<img src='icons/delete.png' class='btnDelete'/> </td>"
+  	  	        +"</td></tr>");; 
+  	      }
+  	    } 
+  	  }
+  	
+  	this.listCliente = function(lista) { 
+  	    $("#ListadoPisosCliente").html(""); 
+  	    $("#ListadoPisosCliente").html( "<thead>" + "<tr>" + "<th></th>"  
+  	      + "<th>ID</th>" + "<th>Agente</th>" + "<th>Precio</th>" 
+  	      + "<th>Dirección</th>" + "<th>Ciudad</th>" + "<th>Año</th>"
+  	      + "<th>Estado</th>"+ "<th>Dirección</th>" 
+  	      + "<th>Imagen</th>" + "</tr>" 
+  	      + "</thead>" + "<tbody>" + "</tbody>"); 
   	    for ( var i in lista) { 
   	      var piso = lista[i]; 
-  	      $("#ListadoPisos tbody").append("<tr> <td>"   
+  	      $("#ListadoPisosCliente tbody").append("<tr> <td>"   
 	  	    + "<td>" + piso.id + "</td>" 
 	        + "<td>" + piso.idAgente + "</td>" 
 	        + "<td>" + piso.precio + "</td>"
@@ -87,7 +121,6 @@ function Model(){
 	        +"</td></tr>");; 
   	    } 
   	  }
-  	
   	
   	// CARGAR PISO DEL FORMULARIO
   	this.loadPisoFromForm = function () {
@@ -149,7 +182,6 @@ function Model(){
 		}
   	}
   };
-
   
   
   function Controller(varmodel, varview) { 
@@ -170,6 +202,7 @@ function Model(){
 	    
 	    // Repintamos la lista de pisos. 
 	    this.view.list(this.model.tbPisos); 
+	    this.view.listCliente(this.model.tbPisosPublic); 
 	    console.log("Pinto Lista")
 	 
 	    // MANEJADORES DE EVENTOS 
@@ -207,9 +240,24 @@ function Model(){
 	      that.view.loadPisoInForm(piso); 
 	    });
 	    
+	    
+	    
+	    
+	    // CERRAR SESIÓN DE USUARIO
+		$("#logout").click(
+			function(event){
+				event.preventDefault();
+				event.stopPropagation();
+				localStorage.removeItem('agente');
+				location="login.html";
+			})
+	    
 	  } 
 	};
 
+	
+	
+	
   
   
 	$(function() { 

@@ -60,13 +60,6 @@ function Controller(varmodel) {
 		    //Mostramos alerta en caso de error
 		    else alert("No se reconoce el agente");  
 		});
-		
-		$("#logout").click(
-			function(event){
-				event.preventDefault();
-				localStorage.removeItem('agente');
-				location="login.html";
-			})
 		}
 			
 };	
