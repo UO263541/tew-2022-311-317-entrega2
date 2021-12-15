@@ -217,7 +217,8 @@ function Model(){
 	    
 	    
 	    // MANEJADORES DE EVENTOS 
-	 // Manejador del botón submit del formulario de Alta y Edición 
+	    
+	 // BOTÓN SUBMIT FORMULARIOS
 	    $("#formPiso").submit(
 	    // Método que gestiona el evento de clickar el botón submit del 
 	    // formulario 
@@ -240,7 +241,7 @@ function Model(){
 	    
 	    
 	    
-	 // Manejador del enlace de edición de un piso en la tabla 
+	 // EDITAR UN PISO DE LA TABLA 
 	    $("#ListadoPisos .btnEdit").click( 
 	    		
 	    // Manejador del evento click en .btnEdit
@@ -293,6 +294,40 @@ function Model(){
 				location="login.html";
 			})
 	 
+			
+			
+		//IMPORTAR PISOS
+		$('#ImportarPisos').click(function(e){
+			console.log("Dentro de importar pisos");
+			$.ajax({
+				type: "GET",
+				url: "http://localhost:8080/gestioneitorv3_0/pisos.json",
+				dataType: "json",
+				success: function(pisos){
+					var tbPisos = localStorage.getItem("tbPiso");
+					tbPisos = JSON.parse(tbPisos);
+					for (var i in pisos){
+						var piso = JSON.stringify({
+							id : pisos[i].ID,
+							idAgente : localStorage.getItem('agente'),
+							precio : pisos[i].precio,
+							direccion : pisos[i].direccion,
+							ciudad : pisos[i].ciudad,
+							anio : pisos[i].anio,
+							estado : pisos[i].estado,
+							foto : pisos[i].foto,
+						});
+						if(that.model.find(pisos[i].ID)!=null){
+							console.log("Ya existe un piso con este ID");
+							that.model.edit(piso);
+						}
+						else{
+							that.model.add(piso);
+						}
+					}
+					that.view.list(that.model.tbPisos);
+				}});
+		});
 			
 			
 		// FUNCIONES USUARIO NO REGISTRADO
