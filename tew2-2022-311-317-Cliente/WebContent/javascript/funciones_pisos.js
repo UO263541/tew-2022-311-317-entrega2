@@ -213,9 +213,7 @@ function Model(){
 	    // Repintamos la lista de pisos. 
 	    this.view.list(this.model.tbPisos); 
 	    this.view.listCliente(this.model.tbPisosPublic); 
-	    console.log("Pinto Lista")
-	 
-	    
+	    console.log(this.model.tbPisosPublic)
 	    
 	    
 	    // MANEJADORES DE EVENTOS 
@@ -305,6 +303,18 @@ function Model(){
 				
 				that.view.filtraPorCiudad(that.model.tbPisosPublic, $(this).val())
 				
+			})
+			
+			
+			//Ordenar por precio
+			$('#OrdenarPisos').click(function(e){
+				var pisosOrd = that.model.tbPisosPublic
+			    pisosOrd.sort(function(a, b) {
+				  return a.precio - b.precio;
+				});
+				console.log(pisosOrd)
+				console.log("Chikfañjls")
+				that.view.listCliente(pisosOrd); 
 			})
 	  } 
 	};
