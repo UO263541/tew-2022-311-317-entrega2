@@ -26,5 +26,5 @@ public interface PisosService {
 	void savePiso(Piso piso) throws EntityAlreadyExistsException;
 	void updatePiso(Piso piso) throws EntityNotFoundException;
 	void deletePiso(Long id) throws EntityNotFoundException;
-
+	void borrarDataBase() throws Exception;
 }

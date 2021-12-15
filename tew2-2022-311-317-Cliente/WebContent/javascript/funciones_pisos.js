@@ -165,18 +165,19 @@ function Model(){
   	// FILTRAR LA TABLA DE PISOS EN FUNCIÖN DE LA CIUDAD
   	this.filtraPorCiudad = function(lista, ciudad){
 		//Creamos la cabecera de la tabla
-  		$("#tbPiso").html(""); 
-		$("#tbPiso").html( "<thead>" + "<tr>" + "<th></th>"
-				+ "<th>id</th>" + "<th>idAgente</th>" + "<th>precio</th>" + "<th>direccion</th>"
-				+ "<th>ciudad</th>" + "<th>Anyo</th>" + "<th>estado</th>"+ "<th>foto</th>" +"</tr>"
-				+ "</thead>" + "<tbody>" + "</tbody>");
+  	    $("#ListadoPisosCliente").html(""); 
+  	    $("#ListadoPisosCliente").html( "<thead>" + "<tr>" + "<th></th>"  
+  	      + "<th>ID</th>" + "<th>Agente</th>" + "<th>Precio</th>" 
+  	      + "<th>Dirección</th>" + "<th>Ciudad</th>" + "<th>Año</th>"
+  	      + "<th>Estado</th>"+  "<th>Imagen</th>" + "</tr>" 
+  	      + "</thead>" + "<tbody>" + "</tbody>"); 
 		
 		//Recorremos el array de pisos en busca de una coincidencia de ciudad
 		for ( var i in lista) {
 			var piso = lista[i];
 			if(piso.ciudad.includes(ciudad)){
 				//En caso de que la ciudad coincida con la suministrada, lo añadimos a la tabla
-				$("#ListadoPisos tbody").append("<tr> <td>"   
+				$("#ListadoPisosCliente tbody").append("<tr> <td>"   
 				  	    + "<td>" + piso.id + "</td>" 
 				        + "<td>" + piso.idAgente + "</td>" 
 				        + "<td>" + piso.precio + "</td>"
@@ -185,8 +186,6 @@ function Model(){
 				        + "<td>" + piso.anio 
 				        + "<td>" + piso.estado 
 				        + "<td>" + piso.foto 
-				        + "<img src='icons/editar.png' class='btnEdit'/>" 
-			  	      	+ "<img src='icons/eliminar.png' class='btnDelete'/> </td>"
 				        +"</td></tr>");; 
 			}
 		
@@ -285,6 +284,8 @@ function Model(){
 	    })
 	    
 	    
+	    
+	    
 	    // CERRAR SESIÓN DE USUARIO
 		$("#logout").click(
 			function(event){
@@ -293,7 +294,18 @@ function Model(){
 				localStorage.removeItem('agente');
 				location="login.html";
 			})
-	    
+	 
+			
+			
+		// FUNCIONES USUARIO NO REGISTRADO
+		
+			//Filtro por ciudad
+			
+			$('#SelectCiudad').change(function(e){
+				
+				that.view.filtraPorCiudad(that.model.tbPisosPublic, $(this).val())
+				
+			})
 	  } 
 	};
 

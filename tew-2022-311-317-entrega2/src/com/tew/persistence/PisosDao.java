@@ -22,5 +22,6 @@ public interface PisosDao {
 	void updatePiso(Piso piso) throws NotPersistedException;
 	void deletePiso(Long id) throws NotPersistedException;
 	Piso findById(Long id);
+	void resetbd() throws Exception;
 
 }

@@ -34,5 +34,6 @@ public interface PisosServicesRs extends PisosService {
 	void updatePiso(Piso piso) throws EntityNotFoundException;
 
 	@POST
+	@Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
 	void borrarDataBase();
 }

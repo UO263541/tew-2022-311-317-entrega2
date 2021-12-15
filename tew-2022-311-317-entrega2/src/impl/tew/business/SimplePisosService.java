@@ -43,4 +43,9 @@ public class SimplePisosService implements PisosService {
 	public Piso findById(Long id) throws EntityNotFoundException {
 		return new PisosBuscar().find(id);
 	}
+
+	@Override
+	public void borrarDataBase() throws Exception {
+		new ResetBBDD().reiniciaBD();
+	}
 }

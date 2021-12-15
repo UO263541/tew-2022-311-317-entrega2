@@ -254,5 +254,59 @@ public class PisosJdbcDao implements PisosDao {
 			if (con != null) {try{ con.close(); } catch (Exception ex){}};
 		}
 	}
+	
+	
+	@SuppressWarnings("resource")
+	@Override
+	public void resetbd() throws Exception {
+		// TODO Auto-generated method stub
+		// TODO Auto-generated method stub
+		PreparedStatement ps = null;
+		Connection con = null;
+
+
+
+		try {
+
+
+
+			String SQL_DRV = "org.hsqldb.jdbcDriver";
+			String SQL_URL = "jdbc:hsqldb:hsql://localhost/localDB";
+
+
+
+			Class.forName(SQL_DRV);
+			con = DriverManager.getConnection(SQL_URL, "sa", "");
+
+
+
+			ps = con.prepareStatement("DELETE FROM PISOS");
+			ps.executeUpdate();
+			ps = con.prepareStatement("DELETE FROM AGENTES");
+			ps.executeUpdate();
+
+
+
+			ps = con.prepareStatement("INSERT INTO AGENTES VALUES(1,'agente1@micorreo.com','clave1')");
+			ps.executeUpdate();
+			ps = con.prepareStatement("INSERT INTO AGENTES VALUES(2,'agente2@micorreo.com','clave2')");
+			ps.executeUpdate();
+
+
+
+		}
+		catch (ClassNotFoundException e) {
+			e.printStackTrace();
+			throw new PersistenceException("Driver not found", e);
+		}
+		catch (SQLException e) {
+			e.printStackTrace();
+			throw new PersistenceException("Invalid SQL or database schema", e);
+		}
+		finally {
+			if (ps != null) {try{ ps.close(); } catch (Exception ex){}};
+			if (con != null) {try{ con.close(); } catch (Exception ex){}};
+		}
+	}
 
 }

@@ -43,6 +43,18 @@ Universidad de Oviedo
 			</div>
 		</div>
 	</header>
+	
+	 <script type="text/javascript">
+ function resetBD() {
+		
+		if (confirm("¿Deseas reiniciar la Base de datos?")) {
+			PisosServicesRs.borrarDataBase();
+			alert("La base de datos se ha reiniciado");
+		} else {
+			alert("Has cancelado la operacion");
+		}
+	}
+ </script>
 	<!-- 
 	***************************************************
 	* MENU ********************************************
@@ -53,7 +65,7 @@ Universidad de Oviedo
       <ul class="nav me-auto">
         <li class="nav-item"><a href="#" class="nav-link link-dark px-2 active" aria-current="page">Inicio</a></li>
         <li class="nav-item"><a href="#" class="nav-link link-dark px-2">Listado</a></li>
-        <li class="nav-item"><a href="#" class="nav-link link-dark px-2">Reiniciar BD</a></li>
+        <li class="nav-item"><a onclick="resetBD()" class="nav-link link-dark px-2">Reiniciar BD</a></li>
       </ul>
     </div>
   </nav>
