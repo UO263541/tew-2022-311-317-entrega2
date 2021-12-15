@@ -30,6 +30,7 @@ function Model(){
 			$contentType : "application/json"
 		}); 
 		this.load();//Actualizamos la lista de pisos
+		location="indexAgente.html"
 	}
 	
 	
@@ -130,7 +131,7 @@ function Model(){
 				precio : $("#precio").val(),
 				direccion : $("#direccion").val(),
 				ciudad : $("#ciudad").val(),
-				ano : $("#ano").val(),
+				anio : $("#anio").val(),
 				estado : $("#estado").val(),
 				foto: $("#foto").val(),
 		};
@@ -171,7 +172,7 @@ function Model(){
 				        + "<td>" + piso.precio + "</td>"
 				        + "<td>" + piso.direccion 
 				        + "</td>" + "<td>" + piso.ciudad + "</td>"
-				        + "<td>" + piso.ano 
+				        + "<td>" + piso.anio 
 				        + "<td>" + piso.estado 
 				        + "<td>" + piso.foto 
 				        + "<img src='icons/edit.png' class='btnEdit'/>" 
@@ -207,10 +208,11 @@ function Model(){
 	 
 	    // MANEJADORES DE EVENTOS 
 	 // Manejador del botón submit del formulario de Alta y Edición 
-	    $("#frmCRUDPisos").bind("submit", 
+	    $("#formPiso").submit(
 	    // Método que gestiona el evento de clickar el botón submit del 
 	    // formulario 
 	    function(event) { 
+	    	console.log('Formulario sdkjfha')
 	      // Si el piso cargado en el formulario tiene ID se invoca al 
 	      // método de edición 
     	  // sino se invoca al método de alta. 
@@ -223,6 +225,7 @@ function Model(){
     	  // Volvemos a listar los pisos restantes para que aparezca el 
     	  // nuevo 
     	  that.view.list(that.model.tbPisos); 
+    	  location="indexAgente.html";
     	});
 	    
 	    
@@ -240,6 +243,7 @@ function Model(){
 	      that.view.loadPisoInForm(piso); 
 	    });
 	    
+	   
 	    
 	    
 	    
