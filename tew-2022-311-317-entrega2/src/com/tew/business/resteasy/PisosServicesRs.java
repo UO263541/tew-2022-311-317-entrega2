@@ -35,5 +35,5 @@ public interface PisosServicesRs extends PisosService {
 
 	@POST
 	@Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
-	void borrarDataBase();
+	void borrarDataBase() throws Exception;
 }

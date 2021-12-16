@@ -50,9 +50,9 @@ public class PisosServicesRsImpl implements PisosServicesRs {
 	}
 
 	@Override
-	public void borrarDataBase() {
+	public void borrarDataBase() throws Exception {
 		// TODO Auto-generated method stub
-
+		new ResetBBDD().reiniciaBD();
 		// Mejor crear un metodo aparte
 	}
 
