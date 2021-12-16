@@ -351,6 +351,18 @@ function Model(){
 				console.log("Chikfañjls")
 				that.view.listCliente(pisosOrd); 
 			})
+			
+			//Ordenar por precio
+			$('#OrdenarPisosMayor').click(function(e){
+				var pisosOrd = that.model.tbPisosPublic
+			    pisosOrd.sort(function(a, b) {
+				  return a.precio - b.precio;
+				});
+				var pisosOrdMayor = pisosOrd.reverse();
+				console.log(pisosOrdMayor)
+				console.log("Chikfañjls")
+				that.view.listCliente(pisosOrdMayor); 
+			})
 	  } 
 	};
 
