@@ -71,7 +71,7 @@ function Model(){
   	    $("#ListadoPisos").html( "<thead>" + "<tr>" + "<th></th>"  
   	      + "<th>ID</th>" + "<th>Agente</th>" + "<th>Precio</th>" 
   	      + "<th>Dirección</th>" + "<th>Ciudad</th>" + "<th>Año</th>"
-  	      + "<th>Estado</th>"+ "<th>Dirección</th>" 
+  	      + "<th>Estado</th>"
   	      + "<th>Imagen</th>" + "</tr>" 
   	      + "</thead>" + "<tbody>" + "</tbody>"); 
   	    for ( var i in lista) {
@@ -103,7 +103,7 @@ function Model(){
   	    $("#ListadoPisosCliente").html( "<thead>" + "<tr>" + "<th></th>"  
   	      + "<th>ID</th>" + "<th>Agente</th>" + "<th>Precio</th>" 
   	      + "<th>Dirección</th>" + "<th>Ciudad</th>" + "<th>Año</th>"
-  	      + "<th>Estado</th>"+ "<th>Dirección</th>" 
+  	      + "<th>Estado</th>" 
   	      + "<th>Imagen</th>" + "</tr>" 
   	      + "</thead>" + "<tbody>" + "</tbody>"); 
   	    for ( var i in lista) { 
@@ -297,37 +297,37 @@ function Model(){
 			
 			
 		//IMPORTAR PISOS
-		$('#ImportarPisos').click(function(e){
-			console.log("Dentro de importar pisos");
-			$.ajax({
-				type: "GET",
-				url: "http://localhost:8080/gestioneitorv3_0/pisos.json",
-				dataType: "json",
-				success: function(pisos){
-					var tbPisos = localStorage.getItem("tbPiso");
-					tbPisos = JSON.parse(tbPisos);
-					for (var i in pisos){
-						var piso = JSON.stringify({
-							id : pisos[i].ID,
-							idAgente : localStorage.getItem('agente'),
-							precio : pisos[i].precio,
-							direccion : pisos[i].direccion,
-							ciudad : pisos[i].ciudad,
-							anio : pisos[i].anio,
-							estado : pisos[i].estado,
-							foto : pisos[i].foto,
-						});
-						if(that.model.find(pisos[i].ID)!=null){
-							console.log("Ya existe un piso con este ID");
-							that.model.edit(piso);
+			$('#ImportarPisos').click(function(e){
+				console.log("Dentro de importar pisos");
+				$.ajax({
+					type: "GET",
+					url: "http://localhost:8080/gestioneitorv3_0/faces/pisos.json",
+					dataType: "json",
+					success: function(pisos){
+						var tbPisos = localStorage.getItem("tbPiso");
+						tbPisos = JSON.parse(tbPisos);
+						for (var i in pisos){
+							var piso = JSON.stringify({
+								id : pisos[i].ID,
+								idAgente : localStorage.getItem('agente'),
+								precio : pisos[i].Precio,
+								direccion : pisos[i].Direccion,
+								ciudad : pisos[i].Ciudad,
+								anio : pisos[i].Anyo,
+								estado : pisos[i].Estado,
+								foto : pisos[i].Foto,
+							});
+							if(that.model.find(pisos[i].ID)!=null){
+								console.log("Ya existe un piso con este ID");
+								that.model.edit(piso);
+							}
+							else{
+								that.model.add(piso);
+							}
 						}
-						else{
-							that.model.add(piso);
-						}
-					}
-					that.view.list(that.model.tbPisos);
-				}});
-		});
+						that.view.list(that.model.tbPisos);
+					}});
+			});
 			
 			
 		// FUNCIONES USUARIO NO REGISTRADO
